@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+###  Ai Planet Assignment For a Front-end Developer   ###
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Technologies / Frameworks / Libraries
 
-## Available Scripts
+React JS , material ui , react-bootstrap
 
-In the project directory, you can run:
+# Objective - 
 
-### `npm start`
+Create a hackathon app where one can create hackathon & see the list
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Context - 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Dashboard for Organizer
 
-### `npm test`
+# Application overview - 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-> Header Common 
 
-### `npm run build`
+-> Create Challenges =  
+                      
+                                         => Create Challenge Heading , Challenge Name , Start Date , End Date , (Date Picker) , Description , image upload , Levels (Easy , Medium , Hard) Dropdown , Create Challenge Button 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-> Why Participate in AI Challenges? =  
+                                        
+                                        => Static Part , Four Cards
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-> Explore Challenges  = 
+                                        
+                                        => Search Bar , Filter Section (Status => All , Active , Past , Upcoming) , (Levels => Easy , Medium , Hard), Filter Section Is working 
 
-### `npm run eject`
+                                        => Filter The Card According to Choice 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+                                        => Cards = 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+                                                  =>   Add Image
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+                                                  =>   Upcoming =  Timer is Static Until the Final Date.
 
-## Learn More
+                                                  =>   Past     =  Show The Start and End Date.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+                                                  =>   Active   =  Timer is Counting 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+                                        => Participate Now Button = 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+                                                   => When clicked on the hackathon it should take the user to the page where the user can see all the data related to hackathon.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+                                        => Overview Page =
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+                                                    => Edit Button for update Hackathon , Delete Button 
+                                                
