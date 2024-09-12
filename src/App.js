@@ -1,11 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Routes, Route } from 'react-router-dom';
+import LandingPage from './components/LandingPage/LandingPage'
+import CreateChallenges from './components/Sections/CreateChallenges';
 
 function App() {
   return (
-    <div className="App">
-        Hello 
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/create-challenge" element={<CreateChallenges />} />
+      {/* Add other routes here */}
+    </Routes>
   );
 }
 
