@@ -12,9 +12,11 @@ function LandingPageTopSection() {
             <div className='heading-line'></div>
           </div>
           <p>AI Challenges at DPhi simulate real-world problems. It is a great place to put your AI/Data Science skills to the test on diverse datasets, allowing you to foster learning through competitions.</p>
-          <Link to="/create-challenge">
-            <button className='create-challenge-button'>Create Challenge</button>
-          </Link>
+          <div className='col-lg-2'>
+              <Link to="/create-challenge">
+                <button className='create-challenge-button'>Create Challenge</button>
+              </Link>
+          </div>
         </div>
         <div className='col-lg-4 d-flex justify-content-center align-items-center'>
           <img src={rocketImg} alt="Rocket" className='img-fluid' />

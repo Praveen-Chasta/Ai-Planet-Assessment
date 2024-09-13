@@ -4,7 +4,7 @@
   --success-color: #ECECEC;
   --danger-color:#FFCE5C;
   --warning-color: #002A3B;
-  ;
+  
   --info-color: #0FA958;
   --light-color: #F8F9FD;
   --dark-color: #000000;
@@ -12,14 +12,21 @@
   --challenges-heading : #333333;
   --dropdown-bg-color : #B7B7B7;
   --create-challenge-button :#44924C;
+  --upcoming : #F2C94C40;
+  --active : #44924C3D;
+  --past :#FF3C002B;
+  --red : #DC1414;
+  --para : #64607D;
+
+
 
   --font-size-xsmall: 0.8rem;
   --font-size : 1rem;
   --font-size-small: 1.125rem;   
   --font-size-medium: 1.5rem;      
   --font-size-large: 2rem;    
-  --font-size-xlarge: 3rem;    
-  --font-size-xxlarge: 2rem;     
+  --font-size-xlarge: 2.5rem;    
+  --font-size-xxlarge: 3rem;     
 }
 
 
@@ -51,7 +58,7 @@
 
 .top-section-content h1 {
   color: var(--secondary-color);
-  font-size: var(--font-size-xlarge);
+  font-size: var(--font-size-xxlarge);
   font-family: 'Poppins', sans-serif;
   position: relative;
   padding-left: 60px; 
@@ -577,6 +584,270 @@
   padding: 10px;
 }
 
-
-
 /* Create Challenge Ends */
+
+/* Card Section Satrts */
+
+.card-section{
+  background-color: var(--primary-color);
+  width: 100%;
+  height: auto;
+  padding : 60px;
+}
+
+.upcoming-challenge{
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; 
+  padding: 0;
+}
+
+.challenges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* Space between the cards */
+}
+
+.card-img {
+  width: 100%; 
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover; 
+}
+
+.status-upcoming {
+  background-color: var(--upcoming);
+  font-size: var(--font-size-xsmall);
+  font-family: 'intel', sans-serif;
+  color : var(--dark-color);
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+  padding: 4px;
+  border-radius: 5px;
+  width: 87px;
+}
+
+.status-active {
+  background-color: var(--active);
+  font-size: var(--font-size-xsmall);
+  font-family: 'intel', sans-serif;
+  color : var(--create-challenge-button);
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+  padding: 4px;
+  border-radius: 5px;
+  width: 87px;
+}
+
+.status-past {
+  background-color: var(--past);
+  font-size: var(--font-size-xsmall);
+  font-family: 'intel', sans-serif;
+  color : var(--dropdown-bg-color);
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+  padding: 4px;
+  border-radius: 5px;
+  width: 87px;
+}
+
+.challenge-title {
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  color : var(--dark-color);
+  margin: 15px 10px;
+}
+
+.starts-in {
+  font-size: 14px;
+  color: #777;
+}
+
+.countdown{
+  font-size: var(--font-size-small);
+  font-family: 'Poppins', sans-serif;
+}
+
+.action-container {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  background-color: var(--create-challenge-button);
+  padding: 2px 18px;
+  border-radius: 8px;
+}
+
+.check-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.participate-btn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; /* Adjust font size as needed */
+}
+
+.time-unit {
+  text-align: center;
+  margin: 0 5px; /* Adjust spacing between time units */
+}
+
+.time-value {
+  display: block;
+  font-weight: bold; /* Make time values bold */
+}
+
+.time-label {
+  display: block;
+  font-size: 0.9rem; /* Smaller font size for labels */
+  margin-top: 5px; /* Space between value and label */
+}
+
+.separator {
+  display: inline-block;
+  margin: 0 5px; /* Adjust spacing around colons */
+}
+
+.countdown-timer span {
+  display: inline-block;
+}
+
+/* Cards Section Ends */
+
+
+/* Challenge Details  Starts */
+
+.challenge-top-section{
+  background-color: var(--primary-color);
+  height : 419px;
+}
+
+.challenge-time-container{
+  background-color: var(--danger-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.challenge-top-section .container{
+  max-width: 1150px;
+}
+
+.challenge-time-container p {
+  color : var(--dark-color);
+  font-family: 'intel', sans-serif;
+  font-size: var(--font-size-xsmall);
+  margin: 0;
+  font-weight: 600;
+}
+
+.clock-icon {
+  width: 14px; 
+  height: 14px; 
+  margin-right: 10px; 
+  margin-top: 3px;
+}
+
+.challenge-name-container h1{
+    font-size: var(--font-size-xlarge);
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 25px;
+}
+
+.challenge-name-container p{
+  font-size: var(--font-size);
+  color : var(--light-color);
+  margin-top: 25px;
+
+}
+
+.easy-button-container{
+  background-color: var(--secondary-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.easy-button-container button{
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+}
+
+.graph-icon {
+  width: 20px; 
+  height: 20px; 
+  margin-right: 10px; 
+  margin-top: 4px;
+}
+
+.challenge-middle-section{
+  box-shadow: 0 6px 8px rgba(221, 230, 237, 1);
+}
+
+.challenge-middle-section .container{
+  max-width: 1150px;
+  padding: 25px 0 5px 0;
+}
+
+.challenge-middle-section h2{
+    font-size: var(--font-size-medium);
+    border-bottom: 4px solid  var(--create-challenge-button);
+    width: 125px;
+    margin: 0;
+    padding-bottom: 15px;
+}
+
+.edit-button{
+  background-color: var(--create-challenge-button);
+  font-size: var(--font-size-small);
+  color: var(--secondary-color);
+  border: 0;
+  padding: 6px 35px;
+  border-radius: 8px;
+}
+
+.delete-button{
+  background-color: var(--secondary-color);
+  color: var(--red);
+  border:  1.8px solid var(--red);
+  padding: 6px 35px;
+  border-radius: 8px;
+  margin-left: 20px;
+}
+
+.challenge-bottom-section{
+  margin: 30px 0;
+}
+
+.challenge-bottom-section .container{
+  max-width: 1150px;
+  padding: 25px 0 5px 0;
+}
+
+.challenge-bottom-section p{
+  font-size: var(--font-size);
+  color: var(--para);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Challenge Details  Ends */
+
