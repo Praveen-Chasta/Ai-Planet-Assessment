@@ -10,7 +10,7 @@ function AchievementSection() {
                 <div className='col-lg-4 d-flex align-items-center justify-content-center position-relative'>
                     <div className='row'>
                         <div className='col-4'>
-                            <img src={aiImg} alt="AI" className='img-fluid achievement-img' />
+                            <img src={aiImg} alt="AI" className='img-fluid ' />
                         </div>
                         <div className='col-8 d-flex flex-column justify-content-center'>
                             <h1>100K+</h1>
@@ -34,7 +34,7 @@ function AchievementSection() {
                 <div className='col-lg-4 d-flex align-items-center justify-content-center'>
                     <div className='row'>
                         <div className='col-4'>
-                            <img src={challengesImg} alt="Challenges" className='img-fluid achievement-img' />
+                            <img src={challengesImg} alt="Challenges" className='img-fluid ' />
                         </div>
                         <div className='col-8 d-flex flex-column justify-content-center'>
                             <h1>100+</h1>

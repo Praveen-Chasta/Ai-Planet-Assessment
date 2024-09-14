@@ -1,25 +1,46 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import DatePicker from 'react-datepicker';
 import calendar from '../../images/calender.png';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { challengesState } from '../../recoil/atoms/atoms';
 import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
-import {toast} from 'react-hot-toast'
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
-function CreateChallenges() {
-  const [challenges, setChallenges] = useRecoilState(challengesState);
+function UpdateSection() {
+  const { challengeId } = useParams(); 
+  console.log('Challenge ID:', challengeId);
+  const challenges = useRecoilValue(challengesState); 
+  const setChallenges = useSetRecoilState(challengesState); 
+
+  const [challengeName, setChallengeName] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [challengeName, setChallengeName] = useState('');
   const [level, setLevel] = useState('Easy');
   const [description, setDescription] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null); 
-  const [imagePreview, setImagePreview] = useState(''); 
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState('');
 
-  const handleCreateChallenge = () => {
+  useEffect(() => {
+    console.log('Challenges:', challenges);
+    const existingChallenge = challenges.find((challenge) => challenge.id === parseInt(challengeId));
+    if (existingChallenge) {
+      console.log('Existing Challenge:', existingChallenge); 
+      setChallengeName(existingChallenge.name);
+      setStartDate(new Date(existingChallenge.startDate));
+      setEndDate(new Date(existingChallenge.endDate));
+      setLevel(existingChallenge.level);
+      setDescription(existingChallenge.description);
+      setImagePreview(existingChallenge.image); 
+    } else {
+      console.error('Challenge not found with ID:', challengeId); 
+    }
+  }, [challengeId, challenges]);
+
+  const handleUpdateChallenge = () => {
     const now = new Date();
     let status = '';
 
@@ -31,52 +52,47 @@ function CreateChallenges() {
       status = 'Active';
     }
 
-    const newChallenge = {
-      id: challenges.length + 1,
+    const updatedChallenge = {
+      id: parseInt(challengeId), 
       name: challengeName,
       startDate,
       endDate,
       level,
       description,
       status,
-      image: imagePreview, 
+      image: imagePreview,
     };
 
+    
+    const updatedChallenges = challenges.map((challenge) =>
+      challenge.id === parseInt(challengeId) ? updatedChallenge : challenge
+    );
+    setChallenges(updatedChallenges);
 
-    setChallenges([...challenges, newChallenge]);
-
-    toast.success('Challenge created successfully!', {
+    
+    toast.success('Challenge updated successfully!', {
       duration: 4000,
       position: 'top-center',
     });
-
-    setChallengeName('');
-    setStartDate(new Date());
-    setEndDate(new Date());
-    setLevel('Easy');
-    setDescription('');
-    setSelectedImage(null);
-    setImagePreview('');
   };
 
-  console.log(level)
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       setSelectedImage(file);
 
-
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImagePreview(reader.result);
+        setImagePreview(reader.result); 
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(file); 
     }
   };
 
+  
   const formatDateTime = (date) => {
-    return format(date, "d MMM'yy h:mm a", { locale: enUS }); 
+    return format(date, "d MMM'yy h:mm a", { locale: enUS });
   };
 
   return (
@@ -85,7 +101,7 @@ function CreateChallenges() {
       <section className='container-fluid create-challenges-container p-0'>
         <div className='top-heading-container p-0'>
           <div className='container'>
-            <h1>Challenge Details</h1>
+            <h1>Update Challenge Details</h1>
           </div>
         </div>
         <div className='challenge-info-container'>
@@ -96,7 +112,7 @@ function CreateChallenges() {
                 type="text"
                 placeholder="Enter challenge name"
                 value={challengeName}
-                onChange={(e) => setChallengeName(e.target.value)}
+                onChange={(e) => setChallengeName(e.target.value)} 
               />
             </div>
             <div className='col-6'>
@@ -124,7 +140,7 @@ function CreateChallenges() {
                   className="date-picker"
                   dateFormat="yyyy/MM/dd h:mm aa"
                   showTimeSelect
-                  timeIntervals={5}
+                  timeIntervals={15}
                   timeCaption="Time"
                   placeholderText="Select end date and time"
                 />
@@ -138,7 +154,7 @@ function CreateChallenges() {
                 rows="8"
                 className="textarea"
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)} 
               />
             </div>
             <div className="col-2">
@@ -148,10 +164,10 @@ function CreateChallenges() {
                   <div className="image-card">
                     <img src={imagePreview} alt="Preview" className="image-preview" />
                     <button className="change-image-btn">
-                      <label htmlFor="file-input">Change Image</label>
+                      <label htmlFor="file-input-2">Change Image</label>
                     </button>
                     <input
-                      id="file-input"
+                      id="file-input-2"
                       type="file"
                       accept="image/*"
                       onChange={handleImageUpload}
@@ -160,11 +176,11 @@ function CreateChallenges() {
                   </div>
                 ) : (
                   <div className="image-upload-btn">
-                    <label htmlFor="file-input">
+                    <label htmlFor="file-input-2">
                       <span>Upload Image</span>
                     </label>
                     <input
-                      id="file-input"
+                      id="file-input-2"
                       type="file"
                       accept="image/*"
                       onChange={handleImageUpload}
@@ -177,13 +193,13 @@ function CreateChallenges() {
             <div className='col-4'>
               <h1>Levels</h1>
               <select className="custom-select" value={level} onChange={(e) => setLevel(e.target.value)}>
-                <option>Easy</option>
-                <option>Medium</option>
-                <option>Hard</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
               </select>
             </div>
-            <button className='create-challenge-button-2' onClick={handleCreateChallenge}>
-              Create Challenge
+            <button className='create-challenge-button-2' onClick={handleUpdateChallenge}>
+              Update Challenge
             </button>
           </div>
         </div>
@@ -192,4 +208,4 @@ function CreateChallenges() {
   );
 }
 
-export default CreateChallenges;
+export default UpdateSection;

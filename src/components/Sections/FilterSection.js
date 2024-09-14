@@ -1,16 +1,16 @@
 import { useState, useCallback } from 'react';
 import { useRecoilState } from 'recoil';
-import { filterState } from '../../recoil/atoms/atoms';  
+import { filterState } from '../../recoil/atoms/atoms';
 import searchImg from '../../images/carbon-search.png';
 import arrowUpImg from '../../images/arrow-up.png';
 import arrowDownImg from '../../images/arrow-down.png';
+import crossIcon from '../../images/cross-circle.png';  
 
 const FilterSection = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useRecoilState(filterState);
   const [searchTerm, setSearchTerm] = useState('');
   const [timeoutId, setTimeoutId] = useState(null);
-
 
   const debounce = (func, delay) => {
     return (...args) => {
@@ -22,15 +22,14 @@ const FilterSection = () => {
     };
   };
 
-
   const updateSearchTerm = useCallback(
     debounce((value) => {
       setFilters((prevFilters) => ({
         ...prevFilters,
         searchTerm: value,
       }));
-    }, 500), 
-    [timeoutId] 
+    }, 500),
+    [timeoutId]
   );
 
   const handleSearchChange = (event) => {
@@ -86,6 +85,22 @@ const FilterSection = () => {
     }));
   };
 
+  const removeFilter = (filterType, filterName) => {
+    setFilters((prevFilters) => {
+      let updatedFilters;
+      if (filterType === 'status') {
+        updatedFilters = prevFilters.status.filter((status) => status !== filterName);
+      } else {
+        updatedFilters = prevFilters.level.filter((level) => level !== filterName);
+      }
+
+      return {
+        ...prevFilters,
+        [filterType]: updatedFilters,
+      };
+    });
+  };
+
   return (
     <section className='filter-section d-flex align-items-center justify-content-center'>
       <div className='container'>
@@ -102,6 +117,32 @@ const FilterSection = () => {
                   value={searchTerm} 
                   onChange={handleSearchChange} 
                 />
+              </div>
+
+      
+              <div className="selected-filters mt-3">
+                {filters.status.map((status) => (
+                  <div key={status} className="selected-filter">
+                    <span>{status}</span>
+                    <img 
+                      src={crossIcon} 
+                      alt="Remove" 
+                      onClick={() => removeFilter('status', status)} 
+                      className="remove-icon" 
+                    />
+                  </div>
+                ))}
+                {filters.level.map((level) => (
+                  <div key={level} className="selected-filter">
+                    <span>{level}</span>
+                    <img 
+                      src={crossIcon} 
+                      alt="Remove" 
+                      onClick={() => removeFilter('level', level)} 
+                      className="remove-icon" 
+                    />
+                  </div>
+                ))}
               </div>
             </div>
             <div className='col-md-4'>

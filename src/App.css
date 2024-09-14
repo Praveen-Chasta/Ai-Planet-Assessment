@@ -196,6 +196,11 @@
   font-size: var(--font-size-xsmall);
 }
 
+.achievement-img{
+  width : 92px;
+  height: 50px;
+}
+
 .position-relative {
   position: relative;
 }
@@ -434,6 +439,35 @@
   margin-right: 10px;
 }
 
+.selected-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.selected-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #F8F9FD7D;
+  padding: 6px 18px;
+  border-radius: 20px;
+}
+
+.selected-filter span {
+  margin-right: 5px;
+  color: var(--secondary-color);
+  font-family: 'Poppins', sans-serif;
+}
+
+.remove-icon {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+
+
 @media (max-width: 776px) {
   .filter-container {
     width: 100%; 
@@ -476,7 +510,7 @@
   font-family: 'intel', sans-serif;
   font-size: var(--font-size-medium);
   font-weight: bold;
-  padding: 25px;
+  padding: 25px 20px;
 }
 
 .challenge-info-container{
@@ -503,7 +537,7 @@
 }
 
 .challenge-info-container .container {
-  padding: 0; 
+  padding: 0 36px; 
 }
 
 .date-picker-container{
@@ -549,11 +583,59 @@
 }
 
 
-.image-uploader {
+/* .image-uploader {
   display: block;
   border: none;
   cursor: pointer;
+} */
+
+.image-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
+
+.image-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  width: 200px;
+  text-align: center;
+}
+
+.image-preview {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.change-image-btn {
+  background: none;
+  border: none;
+  color: #28a745;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.change-image-btn label {
+  cursor: pointer;
+}
+
+.image-upload-btn label {
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  color: #000;
+}
+
 
 .custom-select {
   width: 100%; 
@@ -608,8 +690,8 @@
 
 .challenges-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 20px; /* Space between the cards */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; 
 }
 
 .card-img {
@@ -701,28 +783,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem; /* Adjust font size as needed */
+  font-size: 1.5rem;
 }
 
 .time-unit {
   text-align: center;
-  margin: 0 5px; /* Adjust spacing between time units */
+  margin: 0 5px; 
 }
 
 .time-value {
   display: block;
-  font-weight: bold; /* Make time values bold */
+  font-weight: bold;
 }
 
 .time-label {
   display: block;
-  font-size: 0.9rem; /* Smaller font size for labels */
-  margin-top: 5px; /* Space between value and label */
+  font-size: 0.9rem; 
+  margin-top: 5px; 
 }
 
 .separator {
   display: inline-block;
-  margin: 0 5px; /* Adjust spacing around colons */
+  margin: 0 5px; 
 }
 
 .countdown-timer span {
@@ -745,8 +827,11 @@
   border-radius: 4px;
 }
 
-.challenge-top-section .container{
-  max-width: 1150px;
+@media screen and (min-width : 1200px){
+  .challenge-top-section .container{
+    max-width: 1150px;
+  }
+  
 }
 
 .challenge-time-container p {
@@ -779,17 +864,19 @@
 
 }
 
-.easy-button-container{
+.challenge-level-container{
   background-color: var(--secondary-color);
   padding: 5px 10px;
   border-radius: 5px;
   margin-top: 25px;
+  width: 120px;
 }
 
-.easy-button-container button{
+.challenge-level-container p{
   background: transparent;
   border: none;
   color: var(--primary-color);
+  margin: 0;
 }
 
 .graph-icon {
@@ -803,10 +890,13 @@
   box-shadow: 0 6px 8px rgba(221, 230, 237, 1);
 }
 
-.challenge-middle-section .container{
-  max-width: 1150px;
-  padding: 25px 0 5px 0;
+@media screen and (min-width : 1200px){
+  .challenge-middle-section .container{
+    max-width: 1150px;
+    padding: 25px 0 5px 0;
+  }
 }
+
 
 .challenge-middle-section h2{
     font-size: var(--font-size-medium);
@@ -838,9 +928,11 @@
   margin: 30px 0;
 }
 
-.challenge-bottom-section .container{
-  max-width: 1150px;
-  padding: 25px 0 5px 0;
+@media screen and (min-width : 1200px){
+  .challenge-bottom-section .container{
+    max-width: 1150px;
+    padding: 25px 0 5px 0;
+  }
 }
 
 .challenge-bottom-section p{
