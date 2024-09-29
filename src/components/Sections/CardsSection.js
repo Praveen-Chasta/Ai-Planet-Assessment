@@ -1,6 +1,12 @@
 import { useRecoilValue } from 'recoil';
 import { challengesState, filterState } from '../../recoil/atoms/atoms'; 
 import CardImgOne from '../../images/card-img-1.png'; 
+import CardImgTwo from '../../images/card-img-2.png'; 
+import CardImgThree from '../../images/card-img-3.png'; 
+import CardImgFour from '../../images/card-img-4.png'; 
+import CardImgFive from '../../images/card-img-5.png'; 
+import CardImgSix from '../../images/card-img-6.png'; 
+
 import check from '../../images/check.png';
 import Countdown from 'react-countdown';
 import { Link } from 'react-router-dom';
@@ -8,6 +14,8 @@ import { Link } from 'react-router-dom';
 function CardsSection() {
   const challenges = useRecoilValue(challengesState);
   const filterCriteria = useRecoilValue(filterState);
+
+  const imgArray = [CardImgOne, CardImgTwo, CardImgThree, CardImgFour, CardImgFive, CardImgSix]
 
   const getStatusClass = (status) => {
     switch (status) {
@@ -127,7 +135,7 @@ function CardsSection() {
               statusText = 'Ended on';
             }
 
-            const challengeImage = challenge.image ? challenge.image : CardImgOne;
+            const challengeImage = challenge.image ? challenge.image : imgArray[Math.floor(Math.random() * imgArray.length)];
 
             return (
               <div key={challenge.id} className="col-lg-3 col-md-6 col-sm-12 upcoming-challenge text-center ms-1 mb-5">

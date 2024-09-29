@@ -6,8 +6,7 @@ import '../../App.css'
 function Header() {
   return (
     <header className='container d-flex flex-start'>
-        <img src={companyLogo} alt="Company Logo" className='company-logo img-fluid'/> 
-        
+        <img src={companyLogo} alt="Company Logo" className='company-logo img-fluid'/>     
     </header>
   )
 }

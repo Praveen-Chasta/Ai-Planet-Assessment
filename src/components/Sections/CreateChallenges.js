@@ -5,8 +5,8 @@ import calendar from '../../images/calender.png';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useRecoilState } from 'recoil';
 import { challengesState } from '../../recoil/atoms/atoms';
-import { format } from 'date-fns';
-import { enUS } from 'date-fns/locale';
+// import { format } from 'date-fns';
+// import { enUS } from 'date-fns/locale';
 import {toast} from 'react-hot-toast'
 
 function CreateChallenges() {
@@ -75,9 +75,9 @@ function CreateChallenges() {
     }
   };
 
-  const formatDateTime = (date) => {
-    return format(date, "d MMM'yy h:mm a", { locale: enUS }); 
-  };
+  // const formatDateTime = (date) => {
+  //   return format(date, "d MMM'yy h:mm a", { locale: enUS }); 
+  // };
 
   return (
     <>
