@@ -8,6 +8,7 @@ import { challengesState } from '../../recoil/atoms/atoms';
 // import { format } from 'date-fns';
 // import { enUS } from 'date-fns/locale';
 import {toast} from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 function CreateChallenges() {
   const [challenges, setChallenges] = useRecoilState(challengesState);
@@ -19,7 +20,27 @@ function CreateChallenges() {
   const [selectedImage, setSelectedImage] = useState(null); 
   const [imagePreview, setImagePreview] = useState(''); 
 
+  const navigate = useNavigate()
+
   const handleCreateChallenge = () => {
+
+    if (!challengeName.trim()) {
+      toast.error('Challenge name is required', {
+        duration: 4000,
+        position: 'top-center',
+      });
+      return; 
+    }
+  
+    if (!description.trim()) {
+      toast.error('Description is required', {
+        duration: 4000,
+        position: 'top-center',
+      });
+      return; 
+    }
+
+
     const now = new Date();
     let status = '';
 
@@ -49,6 +70,8 @@ function CreateChallenges() {
       duration: 4000,
       position: 'top-center',
     });
+
+    navigate('/')
 
     setChallengeName('');
     setStartDate(new Date());

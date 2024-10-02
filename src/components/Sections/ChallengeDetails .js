@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
+import { useEffect } from 'react';
 
 function ChallengeDetails() {
   const { id } = useParams(); 
@@ -16,9 +17,23 @@ function ChallengeDetails() {
 
   const challenge = challenges.find(challenge => challenge.id === parseInt(id, 10));
 
+  useEffect(() => {
+    if (!challenge) {
+      // toast.error('Invalid challenge ID! Redirecting to homepage...', {
+      //   duration: 3000,
+      // });
+
+      const timeoutId = setTimeout(() => {
+        navigate('/');
+      }, 1500);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [challenge, navigate]);
+
+
   if (!challenge) {
-  
-    return <p>Challenge not found.</p>;
+    return <h3>Challenge Not Found</h3>; 
   }
 
   const { name, startDate, description, level } = challenge;
